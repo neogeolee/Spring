@@ -27,20 +27,13 @@
 		SELECT COUNT(*) FROM `JBOARD_MEMBER`
 		WHERE `uid`=#{uid};
 	</select>
+	
+	<select id="SELECT_USER" resultType="kr.co.sboard.vo.UserVO">
+		SELECT * FROM `JBOARD_MEMBER`
+		WHERE `uid`=#{uid} AND `pass`=PASSWORD(#{pass});
+	</select>
 
 	<!-- 
-	<insert id="INSERT_USER">
-		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
-	</insert>
-	
-	<select id="SELECT_USER" resultType="">
-		SELECT * FROM `USER3` WHERE `uid`=#{uid};
-	</select>
-	
-	<select id="SELECT_USERS">
-		SELECT * FROM `USER3`;
-	</select>
-	
 	<update id="UPDATE_USER">
 		UPDATE `USER3` SET		
 		`name`=#{name},
