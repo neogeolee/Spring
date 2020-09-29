@@ -3,10 +3,10 @@
   <!-- 카테고리 -->
   <ul class="category" th:fragment="_category">     
       <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
-      <li th:each="category1:${category1}">
-          <a href="#"><i class="fas fa-tshirt"></i>[[${category1.title}]]</a>
-          <ol th:each="category2:${category2}">
-              <li><a href="#">[[${category2.title}]]</a></li>
+      <li th:each="cate1:${cate1List}">
+          <a href="#"><i class="fas fa-tshirt"></i>[[${cate1.title}]]</a>
+          <ol th:each="cate2:${cate2}">
+              <li><a href="#">[[${cate2.title}]]</a></li>
               <li><a href="#">여성의류</a></li>
               <li><a href="#">잡화</a></li>
               <li><a href="#">뷰티</a></li>

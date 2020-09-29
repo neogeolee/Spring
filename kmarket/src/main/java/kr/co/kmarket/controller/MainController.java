@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.kmarket.service.MainService;
 import kr.co.kmarket.vo.Category1Vo;
-import kr.co.kmarket.vo.Category2Vo;
+import kr.co.kmarket.vo.ProductsVo;
 
 @Controller
 public class MainController {
@@ -20,12 +21,23 @@ public class MainController {
 	@GetMapping(value= {"/","/index"})
 	public String index(Model model) {
 		
-		List<Category1Vo> category1 = service.selectCategory1();
-		List<Category2Vo> category2 = service.selectCategory2();
-		model.addAttribute("category1", category1);
-		model.addAttribute("category2", category2);
+		List<Category1Vo> cateList1 = service.selectCate1();
+		List<ProductsVo> hitList = service.selectHitProduct();
+		List<ProductsVo> bestList = service.selectBestProduct();
+		
+		model.addAttribute("cate1List", cateList1);
+		model.addAttribute("hitList", hitList);
+		model.addAttribute("bestList", bestList);
 		
 		return "/index";
+	}
+	
+	@ResponseBody
+	@GetMapping("/main/recommend")
+	public List<ProductsVo> recommend () {
+		
+		return service.selectRecProduct();
+		
 	}
 
 }
