@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.board.dao.BoardDao">
+		
+	<select id="selectArticles" resultType="kr.co.board.vo.BoardVo">
+		SELECT * FROM `board_article` WHERE `parent`=0 ORDER BY `rdate` DESC LIMIT #{start}, 10;
+	</select>
+	
+	<select id="selectArticle" resultType="kr.co.board.vo.BoardVo">
+		SELECT * FROM `board_article` WHERE `seq`=#{seq};
+	</select>
+	
+	<select id="selectCountArticles" resultType="int">
+		SELECT COUNT(*) FROM `board_article`;
+	</select>
+	
+	<update id="modifyArticle" parameterType="kr.co.board.vo.BoardVo">
+		UPDATE `board_article` SET `title`=#{title}, `content`=#{content} WHERE `seq`=#{seq};	
+	</update>
+	
+	<delete id="deleteArticle" parameterType="int">
+		DELETE FROM `board_article` WHERE `seq`=#{seq};
+	</delete>
+	
+	<update id="hitArticle" parameterType="kr.co.board.vo.BoardVo">
+		UPDATE `board_article` SET `hit` = `hit` + 1 WHERE `seq`=#{seq};
+	</update>
+	
+	<insert id="insertComment">
+		INSERT INTO `board_comment` SET
+		`parent`=#{seq},
+		`content`=#{content},
+		`uid`=#{uid},
+		`nick`=#{nick},
+		`regip`= #{regip},
+		`rdate`=NOW();
+	</insert>
+	
+	<select id="selectComments" resultType="kr.co.board.vo.CommentVo">
+		SELECT * FROM `board_comment` WHERE `parent`=#{seq} ORDER BY `seq` DESC;
+	</select>
+	
+	
+	<!--
+	<select id="selectProductsBySearch" resultType="kr.co.kmarket.vo.ProductsVo">
+			SELECT * FROM `km_products` WHERE
+			<if test="opt.equals('name')">
+				`name` LIKE '%${keyword}%'
+			</if>
+			<if test="opt.equals('code')">
+				`code` = '${keyword}'
+			</if>
+			<if test="opt.equals('company')">
+				`company` LIKE '%${keyword}%'
+			</if>
+			<if test="opt.equals('seller')">
+				`seller` LIKE '%${keyword}%'
+			</if>
+			LIMIT ${start}, 10;
+	</select>
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM `km_products` WHERE `code` IN
+		<foreach collection="array" item="code" open="(" separator="," close=")">
+			#{code}
+		</foreach>
+	</delete>
+	
+ 
+	<insert id="insertUser">
+		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
+	</insert>
+	
+	<select id="selectUser" resultType="kr.co.ch11.vo.UserVO">
+		SELECT * FROM `USER3` WHERE `uid`=#{uid};
+	</select>
+	
+	
+	
+	
+	
+	
+-->
+</mapper>

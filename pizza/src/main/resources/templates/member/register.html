@@ -1,0 +1,137 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="/layout/layout_member.html">
+       		<section id="register" layout:fragment="content">
+                <div class="sub-type member">
+                    <div class="inner-box">
+                        <div class="page-title-wrap v2">
+                            <h2 class="page-title">회원가입</h2>
+                            <div class="depth-area">
+                                <ol>
+                                    <li>
+                                        <a th:href="@{/index}">홈</a>
+                                    </li>
+                                    <li>
+                                        <strong>회원가입</strong>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <article class="register">
+                            <form th:action="@{/member/register}" method="post">
+                                <section class="inform">
+                                    <table>
+                                        <div>필수정보입력</div>
+                                            <tbody>
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>아이디
+                                                    </th>
+                                                    <td>
+                                                        <input type="text" name="uid" placeholder="아이디를 입력" required>
+                                                        <span>영문, 숫자로 4~12자로 설정해주세요</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>닉네임
+                                                    </th>
+                                                    <td>
+                                                        <input type="text" name="nick" placeholder="닉네임을 입력" required>
+                                                        <span>2글자 이상 설정해주세요</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>비밀번호
+                                                    </th>
+                                                    <td>
+                                                        <input type="password" name="pass" placeholder="비밀번호를 입력" required>
+                                                        <span>영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>    
+                                                    <th>
+                                                        <span class="must">*</span>비밀번호 확인
+                                                    </th>
+                                                    <td>
+                                                        <input type="password" name="pass2" placeholder="비밀번호를 확인" required>
+                                                        <span>비밀번호 재입력</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                    </table>
+                                </section>
+                                <section class="inform">
+                                    <table>
+                                        <div>기본 정보입력</div>
+                                            <tbody>
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>이름
+                                                    </th>
+                                                    <td>
+                                                        <input type="text" name="name" placeholder="이름을 입력" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>성별
+                                                    </th>
+                                                    <td>
+                                                        <label>
+                                                            <input type="radio" name="gender" value="1" checked>&nbsp;남
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="gender" value="2" >&nbsp;여
+                                                        </label>
+                                                    </td>
+                                                </tr>    
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>EMAIL
+                                                    </th>
+                                                    <td>
+                                                        <input type="text" name="email" placeholder="이메일 입력" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="must">*</span>휴대폰
+                                                    </th>
+                                                    <td>
+                                                        <input type="text" name="hp" placeholder="휴대폰번호입력" required>
+                                                        <span>-포함 13자리 입력해주세요</span>
+                                                    </td>
+                                                </tr>    
+                                                <tr class="addr">
+                                                    <th>
+                                                        주소
+                                                    </th>
+                                                    <td>
+                                                        <div>
+                                                            <input type="text" name="zip" id="zip" placeholder="우편번호 입력 클릭">
+                                                        </div>
+                                                        <div>
+                                                            <input type="text" name="addr1" id="addr1" placeholder="주소를 검색하세요">
+                                                        </div>
+                                                        <div>
+                                                            <input type="text" name="addr2" id="addr2" placeholder="상세주소를 입력하세요">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                    </table>
+                                </section>
+                                <div>
+                                    <input type="submit" class="join" value="회원가입">
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+</body>
+</html>

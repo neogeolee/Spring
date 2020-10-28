@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org" />
+<head>
+    <meta charset="UTF-8">
+    <title>글목록</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">    
+</head>
+<body>
+    <div id="wrapper">
+        <section id="board" class="list">
+            <h3>글목록</h3>
+            <article>
+                <p>
+                    [[${session.member.nick}]]님 반갑습니다.
+                    <a th:href="@{/member/logout}" class="logout">[로그아웃]</a>
+                </p>
+               <table border="0">
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>글쓴이</th>
+                        <th>날짜</th>
+                        <th>조회</th>
+                    </tr>
+                    <tr th:each="article:${articles}">
+                        <td>[[${article.seq}]]</td>
+                        <td><a th:href="@{/view(seq=${article.seq})}">[[${article.title}]]</a>&nbsp;[ [[${article.comment}]] ]</td>
+                        <td>[[${article.nick}]]</td>
+                        <td>[[${#strings.substring(article.rdate, 2, 10)}]]</td>
+                        <td>[[${article.hit}]]</td>
+                    </tr>
+                </table>
+            </article>
+
+            <!-- 페이지 네비게이션 -->
+                           <div class="paging">
+                                <a href="#" class="prev">이전</a>
+                                   <span class="num">
+							            <a th:href="@{/list(pg=${num})}"
+										   th:each="num:${#numbers.sequence(1, pageEnd)}"                
+							               th:class="${#strings.equals(num, currentPg) ? 'on' : ''}">[[${num}]]</a>
+							        </span>
+                                <a href="#" class="next">다음</a>
+                            </div>
+
+            <!-- 글쓰기 버튼 -->
+            <a th:href="@{/write}" class="btnWrite">글쓰기</a>
+
+        </section>
+    </div>    
+</body>
+</html>

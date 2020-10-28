@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org" />
+<head>
+    <meta charset="UTF-8">
+    <title>글보기</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <div id="wrapper">
+        <section id="board" class="view">
+            <h3>글보기</h3>
+            <table>
+                <tr>
+                    <td>제목</td>
+                    <td><input type="text" name="title" th:value="${article.title}" readonly /></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea name="content" readonly>[[${article.content}]]</textarea></td>
+                </tr>
+            </table>
+			<div>
+	            <a th:href="@{/delete(seq=${article.seq})}" class="btnDelete">삭제</a>
+	            <a th:href="@{/modify(seq=${article.seq})}" class="btnModify">수정</a>
+	            <a th:href="@{/list}" class="btnList">목록</a>
+            </div>
+
+            <!-- 댓글 리스트 -->
+            <section class="commentList">
+                <h3>댓글목록</h3>
+                <article th:each="ment:${ments}" class="comment">
+                    <span>
+                        <span>[[${ment.nick}]]</span>
+                        <span>[[${#strings.substring(ment.rdate, 2, 10)}]]</span>
+                    </span>
+                        <textarea name="content" readonly>[[${ment.content}]]</textarea>
+                        <div>
+                            <a th:href="@{/deleteComment}">삭제</a>
+                            <a th:href="@{/modifyComment}">수정</a>
+                        </div>                        
+                </article>
+            </section>
+            <!-- 댓글 입력폼 -->
+            <section class="commentForm">
+                <h3>댓글쓰기</h3>
+                <form th:action="@{'/comment/'+ ${article.seq}}" method="post">
+                <input type="hidden" name="uid" th:value="${session.member.uid}" />
+                <input type="hidden" name="nick" th:value="${session.member.nick}" />
+                    <textarea name="content"></textarea>
+                    <div>
+                        <a th:href="@{/list}" class="btnCancel">취소</a>
+                        <input type="submit" value="작성완료" class="btnWrite">
+                    </div>
+                </form>
+            </section>
+        </section>
+    </div>    
+</body>
+</html>

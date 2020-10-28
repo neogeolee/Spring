@@ -71,7 +71,7 @@
         </table>
 
         <div>
-            <a href="./login.html" class="btnCancel">취소</a>
+            <a href="/farmstory/user/login" class="btnCancel">취소</a>
             <input type="submit"   class="btnJoin" value="회원가입"/>
         </div>
 

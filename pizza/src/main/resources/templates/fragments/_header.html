@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+        <header id="header" th:fragment="_header">
+            <div id="top-wrap">
+                <div class="inner-box" id="tip-box-top">
+                    <a th:href="@{/index}">
+                        <img class="logo" th:src="@{/img/main.png}" alt="로고">
+                        <h1 class="hidden">피자</h1>
+                    </a>
+                    <div class="util-nav">
+                        <a th:if="${session.member eq null}" th:href="@{/member/login}">로그인</a>
+                        <a th:if="${session.member}" th:href="@{/member/logout}">로그아웃</a>
+                        <a th:if="${session.member eq null}" th:href="@{/member/terms}">회원가입</a>
+                    </div>
+                </div>
+            </div>
+            <div id="gnb" class="gnb-wrap">
+                <div class="gnb-inner">
+                    <ul>
+                        <li class="active">
+                            <a th:href="@{/menu/menu_og}">
+                                <span>메뉴</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/brand/brand}">
+                                <span>브랜드소개</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/brand/interioir}">
+                                <span>인테리어컨샙</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <span>오시는길</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a th:href="@{/board/list}">
+                                <span>커뮤니티</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>

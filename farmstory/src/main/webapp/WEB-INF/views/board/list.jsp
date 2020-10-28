@@ -12,13 +12,15 @@
                 <th>날짜</th>
                 <th>조회</th>
             </tr>
-             <tr>
-                 <td>1</td>
-                 <td><a href="/farmstory/board/view?group=${group}&cate=${cate}">제목</a>&nbsp;[2]</td>
-                 <td>어버</td>
-                 <td>20-09-14</td>
-                 <td>777</td>
-             </tr>
+            <c:forEach var="board" items="${boards}">
+	             <tr>
+	                 <td>${count=count-1}</td>
+	                 <td><a href="/farmstory/board/view?group=${group}&cate=${cate}">${board.title}</a>&nbsp;[${board.comment}]</td>
+	                 <td>${board.nick}</td>
+	                 <td>${board.rdate.substring(2, 10)}</td>
+	                 <td>${board.hit}</td>
+	             </tr>
+             </c:forEach>
         </table>
     </article>
 
@@ -26,7 +28,7 @@
     <div class="paging">
         <a href="#" class="prev">이전</a>
         <c:forEach var="i" begin="1" end="${pageEnd}">
-        	<a href="/farmstory/board/list?pg=${i}" class="num ${currentPg == i ? 'current':''}">${i}</a>
+        	<a href="/farmstory/board/list?group=${group}&cate=${cate}&pg=${i}" class="num ${currentPg == i ? 'current':''}">${i}</a>
         </c:forEach>               
         <a href="#" class="next">다음</a>
     </div>

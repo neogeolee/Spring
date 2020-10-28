@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="/layout/layout_board.html">
+        <section layout:fragment="content">
+        <div id="write">
+            <section id="content">
+                <div class="sub-type member">
+                    <div class="inner-box">
+                        <div class="page-title-wrap v2">
+                            <h2 class="page-title">글쓰기</h2>
+                            <div class="depth-area">
+                                <ol>
+                                    <li>
+                                        <a th:href="@{/index}">홈</a>
+                                    </li>
+                                    <li>
+                                        <strong>게시판</strong>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <article class="write">
+                            <article>
+                                <form th:action="@{/board/write}" method="post">
+                                	<input type="hidden" name="uid" th:value="${session.member.uid}" />
+                                	<input type="hidden" name="nick" th:value="${session.member.nick}" />
+                                    <table>
+                                        <tr>
+                                            <td>제목</td>
+                                            <td><input type="text" name="title" placeholder="제목을 입력하세요"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>내용</td>
+                                            <td>
+                                                <textarea name="content"></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div>
+                                        <a th:href="@{/board/list}" class="btnCanel">취소</a>
+                                        <input type="submit" class="btnWrite" value="작성완료">
+                                    </div>
+                                </form>
+                            </article>
+                        </article>
+                    </div>
+                </div>
+            </section>
+   		</div> 
+</html>

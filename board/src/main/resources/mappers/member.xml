@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.board.dao.MemberDao">
+	
+	<insert id="insertMember">
+		INSERT INTO `board_member` SET 
+		`uid`=#{uid},		
+		`pass`=PASSWORD(#{pass}),		
+		`name`=#{name},		
+		`nick`=#{nick},		
+		`gender`=#{gender},	
+		`email`=#{email},
+		`hp`=#{hp},	
+		`zip`=#{zip},		
+		`addr1`=#{addr1},		
+		`addr2`=#{addr2},		
+		`ip`=#{ip},		
+		`rdate`=NOW();			
+	</insert>
+
+	<select id="selectMember" resultType="kr.co.board.vo.MemberVo">
+		SELECT * FROM `board_member` WHERE `uid`=#{uid} AND `pass`=#{pass};
+	</select>
+
+<!-- 
+	<select id="selectCountUid" resultType="kr.co.kmarket.vo.ResultVo">
+		SELECT COUNT(`uid`) AS `result` FROM `km_member` WHERE `uid`=#{uid};
+	</select>
+	
+
+	
+
+	<insert id="insertUser">
+		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
+	</insert>
+	
+	
+	
+
+	
+	<update id="updateUser">
+		UPDATE `USER3` SET		
+		`name`=#{name},
+		`hp`=#{hp},
+		`age`=#{age} 
+		WHERE `uid`=#{uid};		
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM `USER3` WHERE `uid`=#{uid};
+	</delete>
+ -->	
+</mapper>

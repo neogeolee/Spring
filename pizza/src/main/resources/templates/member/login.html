@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="/layout/layout_member.html">
+       		<section id="login" layout:fragment="content">
+                <div class="sub-type member">
+                    <div class="inner-box">
+                        <div class="page-title-wrap v2">
+                            <h2 class="page-title">로그인</h2>
+                            <div class="depth-area">
+                                <ol>
+                                    <li>
+                                        <a th:href="@{/index}">홈</a>
+                                    </li>
+                                    <li>
+                                        <strong>로그인</strong>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <article class="login-area">
+                            <div class="tab-content active" id="login">
+                                <form id="loginFrm" name="loginFrm" th:action="@{/member/login}" method="post">
+                                    <div class="form-item">
+                                        <input type="text" name="uid" id="id" maxlength="20" placeholder="아이디">
+                                    </div>
+                                    <div class="form-item">
+                                        <input type="password" placeholder="비밀번호" name="pass" id="passwd" maxlength="20">
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <input type="submit" class="login" value="로그인">
+                                    </div>
+                                    <div class="btn-wrap v2">
+                                        <a th:href="@{/member/terms}">회원가입</a>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-content" id="guest"></div>
+                        </article>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+</body>
+</html>
